@@ -1,3 +1,3 @@
-import onLoad from 'other'
+import setupBg from 'bg'
 
-window.addEventListener('load', onLoad, false)
+window.addEventListener('load', setupBg, false)
