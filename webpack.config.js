@@ -40,10 +40,10 @@ module.exports = {
           name: 'assets/img/[name].[hash:7].[ext]'
         }
       }, {
-        test: /\.(bin)(\?.*)?$/,
+        test: /\.(webm)(\?.*)?$/,
         loader: 'file-loader',
         query: {
-          name: 'data/[name].[hash:7].[ext]'
+          name: 'audio/[name].[hash:7].[ext]'
         }
       }
     ]
