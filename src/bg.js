@@ -1,5 +1,7 @@
-import './bg.css'
 import { Howl } from 'howler'
+import screenfull from 'screenfull'
+
+import './bg.css'
 import zapAudio from 'audio/zap.webm'
 
 let currentBgIndex = 0
@@ -11,6 +13,7 @@ function getNextClassName () {
 
 let bodyElement
 let soundEffect
+let firstClick = true
 
 export default function setup () {
   soundEffect = new Howl({
@@ -25,6 +28,12 @@ function setupClick () {
 }
 
 function onClick () {
+  if (firstClick) {
+    firstClick = false
+    if (screenfull.enabled) {
+      screenfull.request()
+    }
+  }
   const colorClassName = getNextClassName()
   bodyElement.className = `bg ${colorClassName}`
   soundEffect.play()
