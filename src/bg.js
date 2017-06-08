@@ -1,14 +1,16 @@
 import loadAudio from 'sound'
 import screenfull from 'screenfull'
+import { cycleIdx } from 'iter'
 
 import './bg.css'
 import zapAudio from 'audio/zap.webm'
 
-let currentBgIndex = 0
-
-function getNextClassName () {
-  const idx = (++currentBgIndex) % 14
-  return `bg--color-${idx.toString(16)}`
+function * cycleClassNames (prefix, count) {
+  const indices = cycleIdx(count)
+  while (true) {
+    const idx = indices.next().value
+    yield `${prefix}${idx.toString(16)}`
+  }
 }
 
 let bodyElement
@@ -20,16 +22,17 @@ export default function setup () {
 }
 
 function setupClick () {
-  window.addEventListener('click', onClick, false)
+  const classNames = cycleClassNames('bg--color-', 14)
+  window.addEventListener('click', onClick.bind(null, classNames), false)
   window.addEventListener('touchstart', onTouchStart, false)
   window.addEventListener('touchend', onTouchEnd, false)
 }
 
-function onClick () {
+function onClick (classNames) {
   if (screenfull.enabled && !screenfull.isFullscreen) {
     screenfull.request()
   }
-  const colorClassName = getNextClassName()
+  const colorClassName = classNames.next().value
   bodyElement.className = `bg ${colorClassName}`
   soundEffect.play()
 }
