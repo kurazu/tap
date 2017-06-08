@@ -31,6 +31,10 @@ body {
 	transition: background-color 3s;
 }
 
+:-webkit-full-screen {
+	touch-action: none;
+}
+
 .bg--color-0 {
 	--current-color: var(--color-0);
 }
