@@ -13,7 +13,6 @@ function getNextClassName () {
 
 let bodyElement
 let soundEffect
-let firstClick = true
 
 export default function setup () {
   soundEffect = new Howl({
@@ -28,11 +27,8 @@ function setupClick () {
 }
 
 function onClick () {
-  if (firstClick) {
-    firstClick = false
-    if (screenfull.enabled) {
-      screenfull.request()
-    }
+  if (screenfull.enabled && !screenfull.isFullscreen) {
+    screenfull.request()
   }
   const colorClassName = getNextClassName()
   bodyElement.className = `bg ${colorClassName}`
