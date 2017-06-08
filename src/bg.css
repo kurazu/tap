@@ -16,9 +16,6 @@
 
   --color-c: #bb96ff;
   --color-d: #67eebd;
-
-  --prev-color: var(--color-d);
-  --current-color: var(--color-0);
 }
 
 html, body {
@@ -29,133 +26,63 @@ html, body {
 }
 
 body {
+  --current-color: var(--color-0);
 	background-color: var(--current-color);
+	transition: background-color 3s;
 }
 
 .bg--color-0 {
-	--prev-color: var(--color-d);
 	--current-color: var(--color-0);
 }
 
 .bg--color-1 {
-	--prev-color: var(--color-0);
 	--current-color: var(--color-1);
 }
 
 .bg--color-2 {
-	--prev-color: var(--color-1);
 	--current-color: var(--color-2);
 }
 
 .bg--color-3 {
-	--prev-color: var(--color-2);
 	--current-color: var(--color-3);
 }
 
 .bg--color-4 {
-	--prev-color: var(--color-3);
 	--current-color: var(--color-4);
 }
 
 .bg--color-5 {
-	--prev-color: var(--color-4);
 	--current-color: var(--color-5);
 }
 
 .bg--color-6 {
-	--prev-color: var(--color-5);
 	--current-color: var(--color-6);
 }
 
 .bg--color-7 {
-	--prev-color: var(--color-6);
 	--current-color: var(--color-7);
 }
 
 .bg--color-8 {
-	--prev-color: var(--color-7);
 	--current-color: var(--color-8);
 }
 
 .bg--color-9 {
-	--prev-color: var(--color-8);
 	--current-color: var(--color-9);
 }
 
 .bg--color-a {
-	--prev-color: var(--color-9);
 	--current-color: var(--color-a);
 }
 
 .bg--color-b {
-	--prev-color: var(--color-a);
 	--current-color: var(--color-b);
 }
 
 .bg--color-c {
-	--prev-color: var(--color-b);
 	--current-color: var(--color-c);
 }
 
 .bg--color-d {
-	--prev-color: var(--color-c);
 	--current-color: var(--color-d);
-}
-
-
-.bg--color-0,
-.bg--color-1,
-.bg--color-2,
-.bg--color-3,
-.bg--color-4,
-.bg--color-5,
-.bg--color-6,
-.bg--color-7,
-.bg--color-8,
-.bg--color-9,
-.bg--color-a,
-.bg--color-b,
-.bg--color-c,
-.bg--color-d {
-	animation-duration: 3s;
-}
-
-.bg--color-0,
-.bg--color-2,
-.bg--color-4,
-.bg--color-6,
-.bg--color-8,
-.bg--color-a,
-.bg--color-c {
-	animation-name: bg-switch-even;
-}
-
-.bg--color-1,
-.bg--color-3,
-.bg--color-5,
-.bg--color-7,
-.bg--color-9,
-.bg--color-b,
-.bg--color-d {
-	animation-name: bg-switch-odd;
-}
-
-@keyframes bg-switch-even {
-	from {
-		background-color: var(--prev-color);
-	}
-
-	to {
-		background-color: var(--current-color);
-	}
-}
-
-@keyframes bg-switch-odd {
-	from {
-		background-color: var(--prev-color);
-	}
-
-	to {
-		background-color: var(--current-color);
-	}
 }
