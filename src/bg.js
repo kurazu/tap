@@ -1,4 +1,4 @@
-import { Howl } from 'howler'
+import loadAudio from 'sound'
 import screenfull from 'screenfull'
 
 import './bg.css'
@@ -15,15 +15,14 @@ let bodyElement
 let soundEffect
 
 export default function setup () {
-  soundEffect = new Howl({
-    src: [zapAudio]
-  })
+  loadAudio(zapAudio).then(audio => { soundEffect = audio }).then(setupClick)
   bodyElement = document.body
-  soundEffect.on('load', setupClick)
 }
 
 function setupClick () {
   window.addEventListener('click', onClick, false)
+  window.addEventListener('touchstart', onTouchStart, false)
+  window.addEventListener('touchend', onTouchEnd, false)
 }
 
 function onClick () {
@@ -33,4 +32,12 @@ function onClick () {
   const colorClassName = getNextClassName()
   bodyElement.className = `bg ${colorClassName}`
   soundEffect.play()
+}
+
+function onTouchStart () {
+  bodyElement.innerText = 'TOUCHING'
+}
+
+function onTouchEnd () {
+  bodyElement.innerText = 'NOT TOUCHING'
 }
