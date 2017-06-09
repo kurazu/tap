@@ -1,3 +1,7 @@
-import setupBg from 'bg'
+import Tap from 'tap'
 
-window.addEventListener('load', setupBg, false)
+window.addEventListener('load', onLoad, false)
+
+function onLoad () {
+  new Tap(document.body)
+}
